@@ -27,4 +27,9 @@ public class PersonDAO {
     public List<Person> getUsers(){
         return jdbcTemplate.query("SELECT * FROM users", new PersonMapper());
     }
+
+    public Person getUser(int id){
+        return jdbcTemplate.query("SELECT * FROM users WHERE id = ?",  new Object[]{id}, new PersonMapper())
+                .stream().findAny().orElse(null);
+    }
 }

@@ -18,5 +18,10 @@ public class MainController {
         return personDAO.getUsers();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
+    public Person getUser(@PathVariable("id") int id){
+        return personDAO.getUser(id);
+    }
 
 }
